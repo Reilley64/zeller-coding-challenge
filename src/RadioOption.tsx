@@ -13,6 +13,7 @@ function RadioOption(props: UseRadioProps & { children: ReactNode }) {
 
       <Flex
         {...checkbox}
+        data-testid={"radio-" + props.value}
         sx={{
           alignItems: "center",
           py: 2,

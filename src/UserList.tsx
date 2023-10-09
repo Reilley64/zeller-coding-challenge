@@ -1,16 +1,10 @@
-import {Amplify, API, graphqlOperation} from "aws-amplify";
 import {Avatar, Flex, Heading, Text, useRadioGroup, VStack} from "@chakra-ui/react";
-import {useQuery} from "@tanstack/react-query";
 
-import awsExports from "./aws-exports";
-import {ListZellerCustomers} from "./graphql/queries.ts";
 import {useState} from "react";
 import RadioOption from "./RadioOption.tsx";
-import {GraphQLResult} from "@aws-amplify/api-graphql";
 
-Amplify.configure(awsExports);
 
-function UserList() {
+function UserList(props: { customers: Customer[] }) {
   const radioOptions = ["ADMIN", "MANAGER"];
 
   const [role, setRole] = useState<Role>(radioOptions[0] as Role);
@@ -22,16 +16,6 @@ function UserList() {
   });
 
   const radioGroupProps = getRootProps();
-
-  const listZellerCustomersQuery = useQuery<Customer[]>({
-    queryKey: ["listZellerCustomersQuery"],
-    queryFn: async () => {
-      const response = await API.graphql(graphqlOperation(ListZellerCustomers)) as GraphQLResult<{ listZellerCustomers: { items: Customer[] } }>;
-      return response.data?.listZellerCustomers.items!;
-    },
-  });
-
-  const customers = listZellerCustomersQuery.data!.filter((customer) => customer.role === role);
 
   function cleanRole(role: Role) {
     const firstChar = role.charAt(0);
@@ -62,8 +46,8 @@ function UserList() {
         <Heading size="md" sx={{ mb: 10 }}>{cleanRole(role)} Users</Heading>
 
         <VStack spacing={7} sx={{ alignItems: "revert" }}>
-          {customers.map((customer) => (
-            <Flex sx={{ alignItems: "center" }}>
+          {props.customers.filter((customer) => customer.role === role).map((customer) => (
+            <Flex key={customer.id} sx={{ alignItems: "center" }}>
               <Avatar name={customer.name.split(" ")[0]} size="zeller" />
 
               <Flex sx={{ flexDir: "column", ml: 3 }}>

@@ -1,8 +1,9 @@
 import {ChakraProvider, Flex, Portal, Spinner} from "@chakra-ui/react";
-import UserList from "./UserList.tsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Suspense} from "react";
-import theme from "./theme.ts";
+
+import theme from "./theme";
+import ListZellerCustomersWrapper from "./ListZellerCustomersWrapper";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -23,7 +24,7 @@ function App() {
             </Portal>
           }
         >
-          <UserList />
+          <ListZellerCustomersWrapper />
         </Suspense>
       </ChakraProvider>
     </QueryClientProvider>
