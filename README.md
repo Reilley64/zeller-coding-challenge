@@ -1,27 +1,21 @@
 # Zeller Coding Challenge
+[TanStack Query](https://tanstack.com/query) to interact with the GraphQL API, this provides a nice library to interact with the API that has in built caching and mutations for extendability.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Chakra UI](https://chakra-ui.com/) for UI components, this is a great base UI library this is very themable and extendable.
 
-Currently, two official plugins are available:
+Tests are made using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com), this is an industry standard for creating tests for React components, and provide nice tools to unit test your components.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Install dependencies
+```npm install```
 
-## Expanding the ESLint configuration
+## Build
+```npm run build```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Run
+```npm run preview```
 
-- Configure the top-level `parserOptions` property like this:
+## Run in dev mode
+```npm run dev```
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Run test
+```npm run test```

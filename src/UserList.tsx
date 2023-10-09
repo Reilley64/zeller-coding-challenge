@@ -17,6 +17,7 @@ function UserList(props: { customers: Customer[] }) {
 
   const radioGroupProps = getRootProps();
 
+  // Cleans the role string so that it is in sentence case
   function cleanRole(role: Role) {
     const firstChar = role.charAt(0);
     const restOfString = role.slice(1).toLowerCase();
